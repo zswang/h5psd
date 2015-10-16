@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><!--jdists encoding="ejs" data="#context"--><%- h5.name %><!--/jdists--></title>
+  <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <link rel="stylesheet" type="text/css" href="css/base.css">
+  <script>
+  /*<remove>*/
+  /*<jdists encoding="ejs,regex" data="#context" pattern="/~/g" replacement="--">
+    <!~jdists import="css/base.css" export="<%- output%>/css/base.css" /~>
+  </jdists>*/
+  /*</remove>*/
+  /*<jdists encoding="ejs,uglify" data="#context">*/
+  (function () {
+      var ratio = screen.width / <%- h5.width %>;
+      document.write('<meta name="viewport"content="width=' + <%- h5.width %> +
+        ',initial-scale=' + ratio +
+        ',maximum-scale=' + ratio +
+        ', minimum-scale=' + ratio +
+        ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui"/>');
+  })();
+  /*</jdists>*/
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+    <!--jdists encoding="ejs" data="#context"-->
+      <%
+      h5.layers.forEach(function (layer) {
+        var title = '';
+        if (showTitle && layer.name) {
+          title = 'title="' + layer.name + '" ';
+        }
+        var opacity = '';
+        if (!isNaN(layer.opacity) && layer.opacity !== 1) {
+          opacity = 'opacity = "' + layer.opacity.toFixed(2) + '"';
+        }
+      %>
+      <img class="layer" src="<%- layer.image %>" <%- title%>style="left:<%- layer.left%>px;top:<%- layer.top%>px;<%- opacity%>">
+      <%
+      });
+      %>
+    <!--/jdists-->
+    </div>
+  </div>
+</body>
+</html>
