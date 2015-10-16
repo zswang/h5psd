@@ -14,7 +14,7 @@
 
 ### 安装
 
-`$ npm install jdists [-g]`
+`$ npm install h5psd [-g]`
 
 ### 命令行
 
