@@ -82,17 +82,20 @@ function build(filename, argv) {
         return;
       }
       md5dict[flag] = true;
-      var image = path.join(images, flag.slice(1, 7) + '.png');
-      var imageOutput = path.join(output, image);
-      var exists = fs.existsSync(imageOutput);
-      promises.push(node.saveAsPng(imageOutput).then(function () {
-        if (exists) {
-          console.warn(
-            colors.blue('File %j overwrite.'), imageOutput
-          );
-        }
-        console.log(colors.green('Image %j output complete.'), imageOutput);
-      }));
+      var image;
+      if (!nodeInfo.text) { // 非文本节点
+        image = path.join(images, flag.slice(1, 7) + '.png');
+        var imageOutput = path.join(output, image);
+        var exists = fs.existsSync(imageOutput);
+        promises.push(node.saveAsPng(imageOutput).then(function () {
+          if (exists) {
+            console.warn(
+              colors.blue('File %j overwrite.'), imageOutput
+            );
+          }
+          console.log(colors.green('Image %j output complete.'), imageOutput);
+        }));
+      }
 
       layers.unshift({
         name: nodeInfo.name,

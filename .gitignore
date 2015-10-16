@@ -34,6 +34,8 @@ bower_components
 
 # test
 assets
+test/page
+test/page2
 
 # release
 release

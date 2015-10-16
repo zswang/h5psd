@@ -26,7 +26,7 @@
 <body>
   <div class="container">
     <div class="page">
-    <!--jdists encoding="ejs" data="#context"-->
+      <!--jdists encoding="ejs" data="#context"-->
       <%
       h5.layers.forEach(function (layer) {
         var title = '';
@@ -35,14 +35,35 @@
         }
         var opacity = '';
         if (!isNaN(layer.opacity) && layer.opacity !== 1) {
-          opacity = 'opacity = "' + layer.opacity.toFixed(2) + '"';
+          opacity = 'opacity:' + layer.opacity.toFixed(2) + ';';
         }
+
+        var color = '';
+        if (layer.text && layer.text.font && layer.text.font.colors) {
+          // [0, 204, 51, 255]
+          var value = layer.text.font.colors[0];
+          if (value) {
+            if (value[3] === 255) {
+              color = 'color:#' + value.slice(0, -1).map(function (value) {
+                return (0x100 + parseInt(value)).toString(16).slice(1);
+              }).join('').replace(/(.)\1(.)\2(.)\3/, '$1$2$3') + ';';
+            } else {
+              color = 'color:rgba(' + value.join() + ');';
+            }
+          }
+      %>
+      <p class="layer" <%- title%>style="left:<%- layer.left%>px;top:<%- layer.top%>px;font-size:<%- layer.text.font.sizes[0] %>px;<%- color%><%- opacity%>"><%= layer.text.value %></p>
+      <%
+        } else {
       %>
       <img class="layer" src="<%- layer.image %>" <%- title%>style="left:<%- layer.left%>px;top:<%- layer.top%>px;<%- opacity%>">
       <%
+        }
+      %>
+      <%
       });
       %>
-    <!--/jdists-->
+      <!--/jdists-->
     </div>
   </div>
 </body>
