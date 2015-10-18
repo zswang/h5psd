@@ -29,10 +29,14 @@ var argv = optimist
   .boolean('l')
   .default(false)
 
-.alias('t', 'title')
-  .describe('t', 'Layer name to attribute "title".')
-  .boolean('t')
+.alias('n', 'name')
+  .describe('n', 'Enable the "name" attribute (default false).')
+  .boolean('n')
   .default(false)
+
+.alias('t', 'template')
+  .describe('t', 'Page jdists template file.')
+  .string('t')
 
 .alias('v', 'version')
   .describe('v', 'Print version number and exit.')
@@ -56,11 +60,12 @@ Usage:
 
 Options:
 
-    #{-v, --version,cyan}                Output h5psd version
-    #{-o, --output,cyan}                 Output directory (default input directory)
-    #{-s, --images,cyan}                 Images directory (default "images")
-    #{-l, --layer,cyan}                  Export "<name>.layer.json" file (default false)
-    #{-t, --title,cyan}                  Layer name to attribute "title" (default false)
+    #{-v, --version,cyan}                Output h5psd version.
+    #{-o, --output,cyan}                 Output directory (default input directory).
+    #{-s, --images,cyan}                 Images directory (default "images").
+    #{-l, --layer,cyan}                  Export "<name>.layer" file (default false).
+    #{-n, --name,cyan}                   Enable the "name" attribute (default false).
+    #{-t, --template,cyan}               Page jdists template file.
       */
     })
     .replace(/[^]*\/\*!?\s*|\s*\*\/[^]*/g, '')
@@ -74,4 +79,3 @@ Options:
 argv._.forEach(function (filename) {
   h5psd.build(filename, argv);
 });
-

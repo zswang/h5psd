@@ -109,6 +109,14 @@ h5.layers.forEach(function (layer) {
     opacity = 'opacity:' + layer.opacity.toFixed(2) + ';';
   }
 
+  var vertical = '';
+  if (layer.top >= h5.height * (1 - 0.2)) {
+    vertical = 'bottom:' + (h5.height - layer.top - layer.height) + 'px;';
+  }
+  else {
+    vertical = 'top:' + layer.top + 'px;';
+  }
+
   var color = '';
   if (layer.text && layer.text.font && layer.text.font.colors) {
     // [0, 204, 51, 255]
@@ -118,11 +126,11 @@ h5.layers.forEach(function (layer) {
     }
     var content = String(layer.text.value || '').replace(/\n\r?|\r/g, '<br>');
     %>
-      <p class="layer" <%- title %>style="left:<%- layer.left %>px;top:<%- layer.top %>px;font-size:<%- layer.text.font.sizes[0] %>px;<%- color %><%- opacity %>"><%- content %></p>
+      <p class="layer" <%- title %>style="left:<%- layer.left %>px;<%- vertical %>font-size:<%- layer.text.font.sizes[0] %>px;<%- color %><%- opacity %>"><%- content %></p>
     <%
   } else {
     %>
-      <img class="layer" src="<%- layer.image %>" <%- title %>style="left:<%- layer.left %>px;top:<%- layer.top %>px;<%- opacity %>" width="<%- layer.width %>" height="<%- layer.height %>">
+      <img class="layer" src="<%- layer.image %>" <%- title %>style="left:<%- layer.left %>px;<%- vertical %><%- opacity %>" width="<%- layer.width %>" height="<%- layer.height %>">
     <%
   }
     %>

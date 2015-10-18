@@ -6,26 +6,30 @@ var path = require('path');
 var rimraf = require('rimraf');
 
 describe('coverage', function () {
+  var output = 'test/page1';
+
   it('psd/404.psd', function () {
     h5psd.build('test/psd/404.psd', {
-      output: 'test/page'
+      output: output
     });
   });
 
-  it('psd/m1.psd -l -t -> "m1.layer.json" exits.', function (done) {
+  it('$ h5psd psd/m1.psd -l', function (done) {
     h5psd.build('test/psd/m1.psd', {
-      output: 'test/page',
+      output: output,
       layer: true,
       title: true
     }).then(function () {
-      assert.ok(fs.existsSync('test/page/m1.layer.json'));
-      assert.ok(fs.existsSync('test/page/m1.html'));
-      assert.ok(fs.existsSync('test/fixtures/page/images/'));
-      assert.ok(fs.existsSync('test/page/css/base.css'));
+      assert.ok(fs.existsSync(path.join(output, 'm1.layer')));
+      assert.ok(fs.existsSync(path.join(output, 'm1.html')));
+      assert.ok(fs.existsSync(path.join(output, 'images/657d39.png')));
+      assert.ok(fs.existsSync(path.join(output, 'css/base.css')));
 
-      rimraf.sync('test/page');
+      rimraf.sync(output);
       done();
     }).catch(function () {
+      console.log('error.');
+      rimraf.sync(output);
       done();
     });
   });

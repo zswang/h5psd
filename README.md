@@ -2,6 +2,20 @@
 
 > Converting PSD files into mobile page
 
+PSD 转换成移动端页面的工具。
+
+## 功能
+
++ 自动导出图层的 PNG 文件；
++ 导出 PNG 用 hash 命名，避免出现重复素材；
++ 自动判断背景图；
++ 可以使用自定义模板。（ 使用 [jdists](https://github.com/zswang/jdists) 编写）。
+
+### 预制模板
+
++ `tpl/page.html` 标准模板
++ `tpl/auto-bottom.html` 自动计算需要居底的图层
+
 ## 效果
 
 + 输出的网页
@@ -11,6 +25,12 @@
 ![image](https://cloud.githubusercontent.com/assets/536587/10546873/58cd32fc-7463-11e5-9746-f9faae3025a3.png)
 
 ## 使用
+
+### PSD 准备
+
++ 模式 RGB 颜色、8 位通道；
++ 合并和栅格化实际的图层；
++ 隐藏不需要导出的图层。
 
 ### 安装
 
@@ -25,11 +45,12 @@ Usage:
 
 Options:
 
-    -v, --version                Output h5psd version
-    -o, --output                 Output directory (default input directory)
-    -s, --images                 Images directory (default "images")
-    -l, --layer                  Export "<name>.layer.json" file (default false)
-    -t, --title                  Layer name to attribute "title" (default false)
+    -v, --version                Output h5psd version.
+    -o, --output                 Output directory (default input directory).
+    -s, --images                 Images directory (default "images").
+    -l, --layer                  Export "<name>.layer" file (default false).
+    -n, --name                   Enable the "name" attribute (default false).
+    -t, --template               Page jdists template file.
 ```
 
 ## License
