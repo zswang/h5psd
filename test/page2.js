@@ -14,7 +14,7 @@ describe('coverage', function () {
     });
   });
 
-  it('$ h5psd psd/m2.psd -l -t tpl/auto-bottom.html', function (done) {
+  it('$ h5psd psd/m2.psd -l -t tpl/auto-bottom.html -o ' + output, function (done) {
     h5psd.build('test/psd/m2.psd', {
       output: output,
       template: 'tpl/auto-bottom.html',

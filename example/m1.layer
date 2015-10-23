@@ -1,0 +1,183 @@
+{
+  "name": "m1.psd",
+  "width": 414,
+  "height": 736,
+  "layers": [
+    {
+      "name": "图层 2",
+      "image": "images/c334bf.png",
+      "left": 48,
+      "top": 53,
+      "width": 104,
+      "height": 106,
+      "opacity": 1
+    },
+    {
+      "name": "图层 3",
+      "image": "images/657d39.png",
+      "left": 123,
+      "top": 221,
+      "width": 104,
+      "height": 106,
+      "opacity": 1
+    },
+    {
+      "name": "图层 4",
+      "image": "images/c4a688.png",
+      "left": 39,
+      "top": 397,
+      "width": 104,
+      "height": 106,
+      "opacity": 1
+    },
+    {
+      "name": "服务用户",
+      "image": "images/dab164.png",
+      "left": 172,
+      "top": 83,
+      "width": 108,
+      "height": 27,
+      "opacity": 1,
+      "text": {
+        "value": "服务用户",
+        "font": {
+          "name": "STHeiti",
+          "sizes": [
+            28,
+            28
+          ],
+          "colors": [
+            [
+              0,
+              0,
+              51,
+              255
+            ],
+            [
+              0,
+              0,
+              51,
+              255
+            ]
+          ],
+          "alignment": [
+            "left"
+          ]
+        },
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "transform": {
+          "xx": 1,
+          "xy": 0,
+          "yx": 0,
+          "yy": 1,
+          "tx": 171,
+          "ty": 84.94704684317719
+        }
+      }
+    },
+    {
+      "name": "质量保证",
+      "image": "images/8e105d.png",
+      "left": 247,
+      "top": 251,
+      "width": 110,
+      "height": 26,
+      "opacity": 1,
+      "text": {
+        "value": "质量保证",
+        "font": {
+          "name": "STHeiti",
+          "sizes": [
+            28,
+            28
+          ],
+          "colors": [
+            [
+              204,
+              0,
+              0,
+              255
+            ],
+            [
+              204,
+              0,
+              0,
+              255
+            ]
+          ],
+          "alignment": [
+            "left"
+          ]
+        },
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "transform": {
+          "xx": 1,
+          "xy": 0,
+          "yx": 0,
+          "yy": 1,
+          "tx": 246,
+          "ty": 251.9470468431772
+        }
+      }
+    },
+    {
+      "name": "连接世界",
+      "image": "images/2022c7.png",
+      "left": 162,
+      "top": 449,
+      "width": 111,
+      "height": 26,
+      "opacity": 1,
+      "text": {
+        "value": "连接世界",
+        "font": {
+          "name": "STHeiti",
+          "sizes": [
+            28,
+            28
+          ],
+          "colors": [
+            [
+              0,
+              204,
+              51,
+              255
+            ],
+            [
+              0,
+              204,
+              51,
+              255
+            ]
+          ],
+          "alignment": [
+            "left"
+          ]
+        },
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "transform": {
+          "xx": 1,
+          "xy": 0,
+          "yx": 0,
+          "yy": 1,
+          "tx": 162,
+          "ty": 449.9470468431772
+        }
+      }
+    }
+  ],
+  "background": {
+    "name": "背景",
+    "image": "images/107957.png",
+    "opacity": 1
+  }
+}

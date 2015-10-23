@@ -14,7 +14,7 @@ describe('coverage', function () {
     });
   });
 
-  it('$ h5psd psd/m1.psd -l', function (done) {
+  it('$ h5psd psd/m1.psd -l -o ' + output, function (done) {
     h5psd.build('test/psd/m1.psd', {
       output: output,
       layer: true,

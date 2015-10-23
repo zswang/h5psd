@@ -61,7 +61,7 @@ function build(filename, argv) {
   template = argv.template || 'tpl/page.html';
   if (!fs.existsSync(template)) {
     console.warn(
-      colors.blue('Template file "%s" not exists.'), filename
+      colors.blue('Template file "%s" not exists.'), template
     );
     return;
   }

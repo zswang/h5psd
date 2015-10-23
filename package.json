@@ -1,7 +1,7 @@
 {
   "name": "h5psd",
   "description": "Converting PSD files into mobile page",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "index.js",
   "bin": {
     "h5psd": "cli.js"
@@ -42,9 +42,11 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "_example": "node cli test/psd/m1.psd -l -o example",
+
     "test": "istanbul cover --hook-run-in-context node_modules/mocha/bin/_mocha -- -R spec",
     "lint": "jshint src/h5psd.js",
-    "dist": "jdists src/h5psd.js -o lib/h5psd.js"
+    "dist": "jdists src/h5psd.js -o lib/h5psd.js && npm run _example"
   },
   "files": [
     "index.js",
