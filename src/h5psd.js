@@ -24,6 +24,7 @@ var colors = require('colors/safe');
 var crypto = require('crypto');
 var psd = require('psd');
 var jdists = require('jdists');
+var url = require('url');
 
 /**
  * 将 RGBA 转换成颜色表达式
@@ -132,6 +133,7 @@ function build(filename, argv) {
         md5.update(buffer);
         var flag = md5.digest('hex');
         image = path.join(images, flag.slice(1, 7) + '.png');
+
         if (!md5dict[flag]) { // 内容没有出现过
           md5dict[flag] = true;
           if (!nodeInfo.text) { // 非文本节点
@@ -149,6 +151,7 @@ function build(filename, argv) {
         }
       }
 
+      image = url.format(image); // @see issues#1 处理 Windows 路径分隔符
       if (isBackground) {
         h5.background = {
           name: nodeInfo.name,
