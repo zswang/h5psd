@@ -1,7 +1,7 @@
 {
   "name": "h5psd",
   "description": "Converting PSD files into mobile page",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "index.js",
   "bin": {
     "h5psd": "cli.js"
@@ -51,6 +51,7 @@
   "files": [
     "index.js",
     "cli.js",
-    "lib"
+    "lib",
+    "tpl"
   ]
 }

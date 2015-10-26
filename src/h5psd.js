@@ -58,7 +58,8 @@ function build(filename, argv) {
     );
     return;
   }
-  template = argv.template || 'tpl/page.html';
+
+  template = argv.template || path.join(__dirname, '../tpl/page.html');
   if (!fs.existsSync(template)) {
     console.warn(
       colors.blue('Template file "%s" not exists.'), template
@@ -151,7 +152,9 @@ function build(filename, argv) {
         }
       }
 
-      image = url.format(image); // @see issues#1 处理 Windows 路径分隔符
+      if (image) {
+        image = url.format(image); // @see issues#1 处理 Windows 路径分隔符
+      }
       if (isBackground) {
         h5.background = {
           name: nodeInfo.name,
