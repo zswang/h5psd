@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><!--jdists encoding="ejs" data="#context"--><%- h5.name %><!--/jdists--></title>
+  <link rel="stylesheet" type="text/css" href="css/base.css">
+  <!--remove-->
+  <!--jdists encoding="jhtmls" data="#context">
+  if (h5.width > 420) {
+    var scale = 420 / h5.width;
+    h5.width = 420;
+    h5.height = parseInt(h5.height * scale);
+    h5.layers.forEach(function (layer) {
+      layer.top = parseInt(layer.top * scale);
+      layer.left = parseInt(layer.left * scale);
+      layer.width = parseInt(layer.width * scale);
+      layer.height = parseInt(layer.height * scale);
+      if (layer.text && layer.text.font && layer.text.font.sizes) {
+        layer.text.font.sizes[0] =
+          parseInt(layer.text.font.sizes[0] * scale);
+      }
+    });
+  }
+  </jdists-->
+  <style>
+/*<jdists export="#basecss">*/
+html, body {
+  /*<jdists encoding="ejs" data="#context">
+  width: <%- h5.width %>px;
+  max-height: <%- h5.height %>px;
+  </jdists>*/
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #fff;
+  overflow: hidden;
+  font-family: STHeiTi, Tahoma, Helvetica, Arial, sans-serif;
+}
+
+html {
+  background-color: #ddd;
+}
+
+h1, h2, h3, h4, h5, h6, article, section, div, p {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  position: relative;
+  overflow: visible;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-size: cover !important;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  z-index: 1;
+}
+/*</jdists>*/
+/*<jdists encoding="ejs,regex" data="#context" pattern="/~/g" replacement="--">
+  <!~jdists import="#basecss" export="<%- output %>/css/base.css" /~>
+</jdists>*/
+  </style>
+  <!--/remove-->
+  <script>
+  /*<jdists encoding="ejs,uglify" data="#context">*/
+  (function () {
+      var ratio = screen.width / <%- h5.width %>;
+      document.write('<meta name="viewport"content="width=' + <%- h5.width %> +
+        ',initial-scale=' + ratio +
+        ',maximum-scale=' + ratio +
+        ', minimum-scale=' + ratio +
+        ',user-scalable=no,target-densitydpi=device-dpi,minimal-ui"/>');
+  })();
+  /*</jdists>*/
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!--page-->
+    <!--jdists encoding="ejs" data="#context">
+    <%
+function rgba2color(value) {
+  if (value[3] === 255) {
+    return '#' + value.slice(0, -1).map(function (value) {
+      return (0x100 + parseInt(value)).toString(16).slice(1);
+    }).join('').replace(/(.)\1(.)\2(.)\3/, '$1$2$3');
+  }
+  else {
+    return 'rgba(' + value.join() + ')';
+  }
+}
+
+var style = "";
+if (h5.background) {
+  if (h5.background.color) {
+    style = ' style="background:' + h5.background.color + ';"';
+  } else if (h5.background.image) {
+    style = ' style="background:url(' + h5.background.image + ') no-repeat;"';
+  }
+  var title = '';
+  if (enableName && h5.background.name) {
+    title = ' title="' + h5.background.name + '"';
+  }
+}
+    %>
+    <div class="page"<%- style %><%- title %>>
+    <%
+h5.layers.forEach(function (layer) {
+  var title = '';
+  if (enableName && layer.name) {
+    title = 'title="' + layer.name + '" ';
+  }
+  var opacity = '';
+  if (!isNaN(layer.opacity) && layer.opacity !== 1) {
+    opacity = 'opacity:' + layer.opacity.toFixed(2) + ';';
+  }
+
+  var color = '';
+  if (layer.text && layer.text.font && layer.text.font.colors) {
+    // [0, 204, 51, 255]
+    var value = layer.text.font.colors[0];
+    if (value) {
+      color = 'color:' + rgba2color(value);
+    }
+    var content = String(layer.text.value || '').replace(/\n\r?|\r/g, '<br>');
+    %>
+      <p class="layer" <%- title %>style="left:<%- layer.left %>px;top:<%- layer.top %>px;font-size:<%- layer.text.font.sizes[0] %>px;<%- color %><%- opacity %>"><%- content %></p>
+    <%
+  } else {
+    %>
+      <img class="layer" src="<%- layer.image %>" <%- title %>style="left:<%- layer.left %>px;top:<%- layer.top %>px;<%- opacity %>" width="<%- layer.width %>" height="<%- layer.height %>">
+    <%
+  }
+    %>
+    <%
+});
+    %>
+    </div>
+    </jdists-->
+    <!--/page-->
+  </div>
+</body>
+</html>
